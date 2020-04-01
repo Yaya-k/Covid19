@@ -1,0 +1,23 @@
+.navbar-header .nav-icons {
+    padding-top: 12px;
+    position: absolute;
+    display: inline-block;
+    top: 0;
+
+}
+.navbar-header .nav-icons span {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 20px
+}
+.navbar-header .nav-icons a {
+    color: #000000;
+    text-decoration: none;
+}
+.navbar{
+    background-color: #ecf0f1;
+}
+
+.sur:hover{
+    color: #39ace7;
+}
