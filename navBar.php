@@ -42,6 +42,9 @@
                     <li><a href="index.php?action=deconnexion" style="color: black;" >Déconnexion</a>
 
                     </li>
+                    <li><a href="recap.php" style="color: black;" >Récapitulatif</a>
+
+                    </li>
                 <?php
                 }else
                 {
@@ -51,6 +54,9 @@
 
                     </li>
                     <li><a href="inscription.php" style="color: black;" >Inscription</a>
+
+                    </li>
+                    <li><a href="recap.php" style="color: black;" >Récapitulatif</a>
 
                     </li>
                     <?php
