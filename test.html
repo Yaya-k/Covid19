@@ -1,51 +1,83 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 TRANSITIONAL//EN">
 <html>
 <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Circles</title>
-    <style>
-        /* Always set the map height explicitly to define the size of the div
-         * element that contains the map. */
-        #map {
-            height: 80%;
-            width: 70%;
-            margin-left: 10px;
+    <title>DEPLACEMENT HORIZONTAL DE TEXTE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript">
+        rd=10;
+        la=screen.availWidth;
+
+        function c1()
+        {
+            rd+=10;
+            if (rd>la-175) // selon longueur texte
+                rd=20;
+            el=document.getElementById("a");
+            el.style.left=rd;
+            setTimeout("c1()", 100); // vitesse de défilement
         }
-        /* Optional: Makes the sample page fill the window. */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    </script>
 </head>
-<body>
-<div id="map"></div>
-<script>
-    function newMap()
-    {
-        var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 0, lng: 0},
-            zoom: 5,
-            gestureHandling: 'greedy'
-        });
-
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(0, 0),
-            icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-            label: { color: '#00aaff', fontWeight: 'bold', fontSize: '14px', text: 'Your text here' },
-            optimized: false,
-            visible: true
-        });
-
-        marker.setMap(map);
-    }
-
-    newMap();
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuGNAUyOVsfH_5u2ZlNBzPSoogI9aNAKo&callback=initMap">
-</script>
+<body onLoad="c1();">
+<div align="center" style="position:absolute;" id="a">TEXTE A MODIFIER</div>
 </body>
 </html>
+
+
+
+
+
+
+if(isset($_POST['localisation'])){
+$nom=$_POST['localisation'];
+$req = $bdd->prepare('SELECT nom, caseNumber FROM city WHERE nom = :nom');
+$req->execute(array(
+'nom' => $nom
+));
+
+$resultat = $req->fetch();
+
+//
+$req2 = $bdd->prepare('SELECT lat, lng FROM staticcity WHERE nom = :nom');
+$req2->execute(array(
+'nom' => $nom
+));
+
+$resultat2 = $req2->fetch();
+$lat=$resultat2['lat'];
+$lng=$resultat2['lng'];
+//
+
+if($resultat){
+$caseNumber=$resultat['caseNumber'];
+$req = $bdd->prepare('UPDATE city SET caseNumber = :caseNumber WHERE nom = :nom');
+$req->execute(array(
+'caseNumber' => $caseNumber+1,
+'nom' => $nom
+));
+}else{
+
+// ici on insert
+// pour l'instand la ville mere c dakar
+$ville_mere="dakar";
+$caseNumber=1;
+
+$sql = "INSERT   city (nom, lat	, lng,caseNumber,ville_mere) VALUES(?,?,?,?,?)";
+$stmtinsert = $bdd->prepare($sql);
+$result = $stmtinsert->execute([$nom, $lat, $lng,$caseNumber,$ville_mere]);
+}
+
+
+}
+
+
+if(isset($_POST['commentaire'])){
+$comment	=$_POST['commentaire'];
+
+$req = $bdd->prepare('UPDATE user SET comment		 = :comment	 WHERE email = :email');
+$req->execute(array(
+'comment	' => $comment,
+'email' => $email
+));
+
+}

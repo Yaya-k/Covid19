@@ -34,8 +34,8 @@ include "init.php";
 
         <!-- Login Form -->
         <form role="form" action="index.php" method="post">
-            <input type="text" id="login" class="fadeIn second" name="name" placeholder="Nom" required>
-            <input type="email" id="login" class="fadeIn second" name="email" placeholder="email" required>
+            <input type="text" id="login" class="fadeIn second" name="name" placeholder="Yaya Kamissokho" required>
+            <input type="email" id="login" class="fadeIn second" name="email" placeholder="yaya.kamissokho@..." required>
 
             <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required minlength=8 onkeyup='check();'>
             <input type="password" id="confirmPassword" class="fadeIn third" name="Conpassword" placeholder="Confirm password" required minlength=8 onkeyup='check();'>

@@ -1,3 +1,6 @@
+
+
+
 <link rel="stylesheet" href="css/navBar.css">
 
 <nav class="navbar navbar-inverse navbar-static-top custom-navbar" role="navigation">
@@ -7,7 +10,7 @@
                   <?php
                   if(isset($_SESSION['email'])){
                     ?>
-                      <a href="index.php?action=profile"> <span class="glyphicon glyphicon-user"></span>
+                      <a href="form.php"> <span class="glyphicon glyphicon-user"></span>
                       </a>
                       <?php
                   }else{
@@ -36,7 +39,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <?php if (isset($_SESSION['email'])){
                     ?>
-                    <li ><a href="index.php?action=profile" style="color: black;" >Profile</a>
+                    <li ><a href="form.php" style="color: black;" >Profile</a>
 
                     </li>
                     <li><a href="index.php?action=deconnexion" style="color: black;" >Déconnexion</a>

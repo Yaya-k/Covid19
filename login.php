@@ -33,8 +33,8 @@ include "init.php";
 
         <!-- Login Form -->
         <form role="form" action="index.php" method="post">
-            <input type="email" id="login" class="fadeIn second" name="email" placeholder="login" required>
-            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required>
+            <input type="email" id="login" class="fadeIn second" name="email" placeholder="yaya.kamissokho@..." required>
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="*********" required>
             <input type="submit" class="fadeIn fourth" value="Log In" name="submitLogin">
             <br>
             <?php
